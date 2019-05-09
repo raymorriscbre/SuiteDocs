@@ -58,6 +58,9 @@ sudo chmod -R g+w custom/ cache/ modules/ upload/ .htaccess config.php config_ov
 sudo restorecon -vr ./
 sudo chcon -R -t httpd_sys_rw_content_t custom/ cache/ modules/ upload/ .htaccess config.php config_override.php
 sudo semanage fcontext -a -t httpd_sys_rw_content_t "$SUITE_PATH(/.*)?"
+
+After configuring SuiteCRM, you may wish to increase security by preventing certain further changes via the web:
+chmod g-w .htaccess config.php config_override.php
 ----
 .  That `www-data` needs to be replaced by the actual system user that your web server runs under. This varies depending on your
 operating system. Common web server users are as follows:
